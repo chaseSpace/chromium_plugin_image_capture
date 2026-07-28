@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "精灵捕手",
+  "version": "1.0.0",
+  "description": "一键捕获当前页面中的图片地址，并在插件前端展示和查询历史记录。",
+  "permissions": [
+    "activeTab",
+    "downloads",
+    "scripting",
+    "storage",
+    "tabs"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "精灵捕手",
+    "default_popup": "popup.html"
+  }
+}

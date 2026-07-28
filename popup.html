@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>精灵捕手</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <main class="popup">
+      <header class="header">
+        <div>
+          <div class="titleRow">
+            <h1>精灵捕手</h1>
+            <span class="tagline">帮您快速采集网页图片。</span>
+          </div>
+          <p id="statusText">点击按钮捕获当前页面图片地址</p>
+        </div>
+        <button id="captureBtn" type="button">捕获</button>
+      </header>
+
+      <button id="downloadFaqBtn" type="button" class="faqLink">
+        FAQ：如何关闭下载文件弹窗提示，实现一键自动下载？
+      </button>
+
+      <section class="current">
+        <div class="sectionTitle">当前结果</div>
+        <div id="currentSummary" class="summary empty">暂无捕获结果</div>
+        <div class="actions">
+          <button id="downloadFilterBtn" type="button" class="filterTextButton">修改查询条件</button>
+          <button id="sortByResolutionBtn" type="button" class="secondary" disabled>分辨率 ↓</button>
+          <button id="copyBtn" type="button" disabled>复制地址</button>
+          <button id="downloadBtn" type="button" disabled>一键下载</button>
+        </div>
+        <div class="imageUrlBox">
+          <div id="imageUrlList" class="imageUrlList" aria-live="polite">
+            <div class="emptyState">捕获到的图片地址会显示在这里</div>
+          </div>
+          <div id="queryResultCount" class="queryResultCount">查询结果：<span>0</span> 条</div>
+        </div>
+      </section>
+
+      <section class="history">
+        <div class="historyHeader">
+          <div class="sectionTitle">历史记录</div>
+          <button id="clearBtn" type="button" class="ghost">清空</button>
+        </div>
+        <input id="searchInput" type="search" placeholder="搜索标题、页面地址或图片地址">
+        <div id="historyList" class="historyList"></div>
+        <div class="pagination">
+          <button id="prevPageBtn" type="button" class="ghost">上一页</button>
+          <span id="pageInfo">第 1 / 1 页</span>
+          <button id="nextPageBtn" type="button" class="ghost">下一页</button>
+        </div>
+      </section>
+    </main>
+
+    <div id="filterModal" class="modalOverlay" hidden>
+      <div class="modalPanel" role="dialog" aria-modal="true" aria-labelledby="filterTitle">
+        <div class="modalHeader">
+          <div id="filterTitle" class="modalTitle">查询条件</div>
+          <button id="closeFilterBtn" type="button" class="modalClose" title="关闭">×</button>
+        </div>
+        <label class="field">
+          <span>最小宽度</span>
+          <input id="minWidthInput" type="number" min="0" step="1" placeholder="0">
+        </label>
+        <label class="field">
+          <span>最小高度</span>
+          <input id="minHeightInput" type="number" min="0" step="1" placeholder="0">
+        </label>
+        <div class="modalActions">
+          <button id="resetFilterBtn" type="button" class="grayButton">重置</button>
+          <button id="saveFilterBtn" type="button">保存</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
